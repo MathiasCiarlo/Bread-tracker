@@ -18,4 +18,11 @@ firebase.initializeApp(config)
 const auth = firebase.auth()
 const db = firebase.firestore()
 
-export { auth, db }
+const storage = firebase.storage()
+const storageRef = storage.ref()
+//userphotos
+const userPhotos = storageRef.child('userData')
+//sitephots
+const photos = storageRef.child('photos')
+
+export { auth, db, userPhotos, photos }
