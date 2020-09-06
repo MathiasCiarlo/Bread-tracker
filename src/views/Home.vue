@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import FrontPage from "@/components/FrontPage";
+import FrontPage from '@/components/FrontPage'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     FrontPage
   }
-};
+}
 </script>
