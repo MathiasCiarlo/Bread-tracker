@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app'
 
 import 'firebase/auth'
+import 'firebase/storage'
 import 'firebase/firestore'
 
 const config = {
@@ -20,9 +21,7 @@ const db = firebase.firestore()
 
 const storage = firebase.storage()
 const storageRef = storage.ref()
-//userphotos
 const userPhotos = storageRef.child('userData')
-//sitephots
 const photos = storageRef.child('photos')
 
 export { auth, db, userPhotos, photos }
