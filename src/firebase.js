@@ -12,7 +12,7 @@ const config = {
   storageBucket: 'bake-tracker.appspot.com',
   messagingSenderId: '293905641547',
   appId: '1:293905641547:web:78c53ff3ac9c1297e95dce',
-  measurementId: 'G-X25YKCY803'
+  measurementId: 'G-X25YKCY803',
 }
 firebase.initializeApp(config)
 

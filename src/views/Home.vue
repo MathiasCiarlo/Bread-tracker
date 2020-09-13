@@ -10,7 +10,7 @@ import FrontPage from '@/components/FrontPage'
 export default {
   name: 'Home',
   components: {
-    FrontPage
-  }
+    FrontPage,
+  },
 }
 </script>

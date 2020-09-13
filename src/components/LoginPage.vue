@@ -4,28 +4,9 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
-            {{
-              currentUser
-                ? 'User is logged in with email: ' + currentUser.email
-                : 'Not signed in'
-            }}
-          </v-col>
-        </v-row>
-
-        <v-row align="center" justify="center">
-          <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
               <v-toolbar color="primary" dark flat>
-                <v-toolbar-title>Login form</v-toolbar-title>
-                <v-spacer></v-spacer>
-                <v-tooltip bottom>
-                  <template v-slot:activator="{ on }">
-                    <v-btn :href="source" icon large target="_blank" v-on="on">
-                      <v-icon>mdi-code-tags</v-icon>
-                    </v-btn>
-                  </template>
-                  <span>Source</span>
-                </v-tooltip>
+                <v-toolbar-title>Login</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
                 <v-form>
@@ -49,7 +30,9 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @click="login">Login</v-btn>
+                <v-btn color="primary" @click="login({ email, password })"
+                  >Login</v-btn
+                >
               </v-card-actions>
             </v-card>
           </v-col>
@@ -60,25 +43,24 @@
 </template>
 
 <script>
-import { auth } from '@/firebase'
-
 export default {
-  props: {
-    source: String
-  },
-
   data: () => ({
     email: '',
     password: '',
-    currentUser: null
+    currentUser: null,
   }),
 
   methods: {
     login() {
-      auth.signInWithEmailAndPassword(this.email, this.password).then(() => {
-        this.currentUser = auth.currentUser
-      })
-    }
-  }
+      this.$store
+        .dispatch('auth/login', {
+          email: this.email,
+          password: this.password,
+        })
+        .then(() => {
+          this.$router.push('/')
+        })
+    },
+  },
 }
 </script>
